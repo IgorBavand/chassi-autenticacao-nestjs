@@ -12,10 +12,7 @@ export class AutenticacaoService {
   ) {}
 
   async validateUser(email: string, password: string) {
-    console.log(email + ' ' + password);
-
     const user = await this.usuarioService.findByEmail(email);
-    console.log(user);
     const correctPassword =
       user && (await this.cryptoService.compareHash(password, user.senha));
 
