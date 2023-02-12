@@ -4,7 +4,6 @@ import { BadRequestInterceptor } from './modules/common/errors/interceptors/bad-
 import { ConflictInterceptor } from './modules/common/errors/interceptors/conflict.interceptor';
 import { DataBaseInterceptor } from './modules/common/errors/interceptors/database-error.interceptor';
 import { UnauthorizedInterceptor } from './modules/common/errors/interceptors/unauthorized.interceptor';
-import { UnauthorizedError } from './modules/common/errors/types/UnauthorizedError';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
