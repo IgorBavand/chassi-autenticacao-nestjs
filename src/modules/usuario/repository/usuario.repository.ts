@@ -26,13 +26,28 @@ export class UsuarioRepository {
   }
 
   async buscarTodos(): Promise<UsuarioEntity[]> {
-    return this.prisma.usuario.findMany();
+    return this.prisma.usuario.findMany({
+      include: {
+        permissoes: {
+          select: {
+            permissao: {
+              select: {
+                codigo: true,
+              },
+            },
+          },
+        },
+      },
+    });
   }
 
   async findByEmail(email: string): Promise<UsuarioEntity> {
     return this.prisma.usuario.findUnique({
       where: {
         email,
+      },
+      include: {
+        permissoes: true,
       },
     });
   }

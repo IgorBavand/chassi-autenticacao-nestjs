@@ -11,22 +11,22 @@ datasource db {
 }
 
 model Usuario {
-  id               Int                @id @default(autoincrement())
-  nome             String
-  email            String             @unique
-  senha            String
-  dataCadastro     DateTime           @default(now()) @map("data_cadastro")
-  PermissaoUsuario PermissaoUsuario[]
+  id           Int                @id @default(autoincrement())
+  nome         String
+  email        String             @unique
+  senha        String
+  dataCadastro DateTime           @default(now()) @map("data_cadastro")
+  permissoes   PermissaoUsuario[]
 
   @@map("usuarios")
 }
 
 model Permissao {
-  id               Int                @id @default(autoincrement())
-  codigo           String
-  descricao        String
-  dataCadastro     DateTime           @default(now()) @map("data_cadastro")
-  PermissaoUsuario PermissaoUsuario[]
+  id           Int                @id @default(autoincrement())
+  codigo       String
+  descricao    String
+  dataCadastro DateTime           @default(now()) @map("data_cadastro")
+  usuarios     PermissaoUsuario[]
 
   @@map("permissoes")
 }
